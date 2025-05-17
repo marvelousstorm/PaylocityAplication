@@ -1,0 +1,29 @@
+variables:
+  ENV: prod
+  SUITE_NAME: smokeUI
+
+stages:
+  - test
+
+cypress-run:
+  stage: test
+  image: cypress/browsers:22.12.0  # Cypress official image with Chrome
+  before_script:
+    - apt-get update && apt-get install -y curl git
+    - npm ci  # faster and more consistent than `npm install`
+    - npm install js-yaml  # if needed by parse-suite.js
+  script:
+    - eval $(node parse-suite.js)  # sets $SUITES and $CONFIG_FILE
+    - echo "SUITES: $SUITES"
+    - echo "CONFIG_FILE: $CONFIG_FILE"
+    - npm start &  # start your web app in the background
+    - npx wait-on http://localhost:3000  # wait for the app to be ready (adjust port as needed)
+    - npx cypress run --spec "$SUITES" --config-file "$CONFIG_FILE" -b chrome
+  rules:
+    - when: manual
+  artifacts:
+    when: on_failure
+    paths:
+      - cypress/videos
+      - cypress/screenshots
+    expire_in: 1 day

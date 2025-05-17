@@ -1,0 +1,6 @@
+configFile: "cypress.config-prod.js"
+suites:
+  smoke:
+    spec: "cypress/e2e/SmokeUI/*.cy.js"
+  API:
+    spec: "cypress/e2e/API/*.cy.js"
