@@ -5,7 +5,7 @@ const yaml = require('js-yaml');
 const env = process.env.ENV || 'prod';  // Default to 'stage' if not set
 const suiteName = process.env.SUITE_NAME || 'smokeUI';
 
-const filePath = env === 'prod' ? 'github/workflows/test-suites-prod.yml' : 'github/workflows/test-suites-stage.yml';
+const filePath = env === 'prod' ? 'github/test-suites-prod.yml' : 'github/test-suites-stage.yml';
 
 try {
   const config = yaml.load(fs.readFileSync(filePath, 'utf8'));
