@@ -1,29 +1,54 @@
-variables:
+name: Run Cypress Tests
+
+on:
+  workflow_dispatch:  # manual trigger
+  push:
+    branches:
+      - main
+
+env:
   ENV: prod
   SUITE_NAME: smokeUI
 
-stages:
-  - test
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
 
-cypress-run:
-  stage: test
-  image: cypress/browsers:22.12.0  # Cypress official image with Chrome
-  before_script:
-    - apt-get update && apt-get install -y curl git
-    - npm ci  # faster and more consistent than `npm install`
-    - npm install js-yaml  # if needed by parse-suite.js
-  script:
-    - eval $(node parse-suite.js)  # sets $SUITES and $CONFIG_FILE
-    - echo "SUITES: $SUITES"
-    - echo "CONFIG_FILE: $CONFIG_FILE"
-    - npm start &  # start your web app in the background
-    - npx wait-on http://localhost:3000  # wait for the app to be ready (adjust port as needed)
-    - npx cypress run --spec "$SUITES" --config-file "$CONFIG_FILE" -b chrome
-  rules:
-    - when: manual
-  artifacts:
-    when: on_failure
-    paths:
-      - cypress/videos
-      - cypress/screenshots
-    expire_in: 1 day
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm install js-yaml
+
+      - name: Parse suite
+        id: parse
+        run: |
+          eval $(node parse-suite.js)
+          echo "SUITES=$SUITES" >> $GITHUB_ENV
+          echo "CONFIG_FILE=$CONFIG_FILE" >> $GITHUB_ENV
+
+      - name: Start app
+        run: npm start &
+      
+      # - name: Wait for app
+      #   run: npx wait-on http://localhost:3000  # Adjust if needed
+
+      - name: Run Cypress
+        run: npx cypress run --spec "$SUITES" --config-file "$CONFIG_FILE" -b chrome
+
+      - name: Upload Cypress Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
