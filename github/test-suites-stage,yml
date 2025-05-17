@@ -1,6 +1,6 @@
 configFile: "cypress.config-stage.js"
 suites:
-  smoke:
+  smokeUI:
     spec: "cypress/e2e/SmokeUI/*.cy.js"
   API:
     spec: "cypress/e2e/API/*.cy.js"
