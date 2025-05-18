@@ -17,7 +17,7 @@ on:
 
 env:
   ENV: prod
-  SUITE_NAME: smokeUI
+  SUITE_NAME: ${{ github.event.inputs.suite_name || 'smokeUI' }}
 
 jobs:
   cypress-run:
