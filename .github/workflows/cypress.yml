@@ -11,12 +11,20 @@ on:
         options:
           - smokeUI
           - API
+      env:
+        description: 'Enviroment to run'
+        required: true
+        default: 'prod'
+        type: choice
+        options:
+          - prod
+          - stage
   push:
     branches:
       - main
 
 env:
-  ENV: prod
+  ENV: ${{ github.event.inputs.env || 'prod' }}
   SUITE_NAME: ${{ github.event.inputs.suite_name || 'smokeUI' }}
 
 jobs:
