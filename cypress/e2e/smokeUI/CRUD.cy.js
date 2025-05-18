@@ -6,7 +6,7 @@ const username = Cypress.env('username')
 const password = Cypress.env('password')
 const env = Cypress.env('platform')
 let firstName, lastName, dependants
-describe('CRUD test', { tags: ['@smoke'], cases: [1] }, () => {
+describe('CRUD test', { tags: ['@smoke']}, () => {
     before(() => {
         cy.fixture('test_data.json').then((test_data) => {
             let testD = (env === 'stage') ? test_data.stage.CRUD : test_data.production.CRUD

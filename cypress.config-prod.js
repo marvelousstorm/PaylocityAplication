@@ -18,7 +18,7 @@ module.exports = defineConfig({
       baseURL: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/',
       username: 'TestUser747',
       password: 'gQ;)DE3[9qFJ',
-      authorizationCode:""
+      authorizationCode:"Basic VGVzdFVzZXI3NDc6Z1E7KURFM1s5cUZK"
     },
   },
 });

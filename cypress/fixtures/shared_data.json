@@ -2,10 +2,16 @@
   "stage": {
     "CRUD": {
       "employeeId": ""
+    },
+    "CRUDAPI": {
+      "employeeId": ""
     }
   },
   "production": {
     "CRUD": {
+      "employeeId": ""
+    },
+    "CRUDAPI": {
       "employeeId": ""
     }
   }

@@ -6,6 +6,13 @@
                 "lastName": "Rosales",
                 "dependants": "1"
             }
+        },
+        "CRUDAPI": {
+            "employee": {
+                "firstName": "API",
+                "lastName": "AutomationTest",
+                "dependants": "1"
+            }
         }
     },
     "production": {
@@ -13,6 +20,13 @@
             "employee": {
                 "firstName": "Cesar",
                 "lastName": "Rosales",
+                "dependants": "1"
+            }
+        },
+        "CRUDAPI": {
+            "employee": {
+                "firstName": "API",
+                "lastName": "AutomationTest",
                 "dependants": "1"
             }
         }
