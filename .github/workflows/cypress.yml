@@ -1,7 +1,16 @@
 name: Run Cypress Tests
 
 on:
-  workflow_dispatch:  # manual trigger
+  workflow_dispatch:
+    inputs:
+      suite_name:
+        description: 'Suite to run'
+        required: true
+        default: 'smokeUI'
+        type: choice
+        options:
+          - smokeUI
+          - API
   push:
     branches:
       - main
