@@ -1,6 +1,8 @@
 {
   "stage": {
-    "CRUD": {}
+    "CRUD": {
+      "employeeId": ""
+    }
   },
   "production": {
     "CRUD": {
