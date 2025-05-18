@@ -1,0 +1,20 @@
+{
+    "stage": {
+        "CRUD": {
+            "employee": {
+                "firstName": "Cesar",
+                "lastName": "Rosales",
+                "dependants": "1"
+            }
+        }
+    },
+    "production": {
+        "CRUD": {
+            "employee": {
+                "firstName": "Cesar",
+                "lastName": "Rosales",
+                "dependants": "1"
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "stage": {
+        "CRUD": {
+        }
+    },
+    "production": {
+        "CRUD": {
+        }
+    }
+}
