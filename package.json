@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "open:prod": "npx cypress open --config-file cypress.config-prod.js -b chrome",
+    "run:prodUI": "npx cypress run --spec \"cypress/e2e/smokeUI/*.js\" --config-file cypress.config-prod.js -b chrome",
+    "run:prodAPI": "npx cypress run --spec \"cypress/e2e/API/*.js\" --config-file cypress.config-prod.js -b chrome",
+    "open:stage": "npx cypress open --config-file cypress.config-stage.js -b chrome",
+    "run:stageUI": "npx cypress run --spec \"cypress/e2e/smokeUI/*.js\" --config-file cypress.config-stage.js -b chrome",
+    "run:stageAPI": "npx cypress run --spec \"cypress/e2e/API/*.js\" --config-file cypress.config-stage.js -b chrome"
   },
   "repository": {
     "type": "git",
