@@ -19,6 +19,7 @@ This project uses Cypress for end-to-end testing.
 
 ### Run tests - Terminal in Production
 > **`npm run run:prodUI`** — Runs the Cypress UI tests using the production config file via terminal.
+
 > **`npm run run:prodAPI`** — Runs the Cypress API tests using the production config file via terminal.
 
 ### Run tests - Cypress Dashboard in Stage
@@ -26,6 +27,7 @@ This project uses Cypress for end-to-end testing.
 
 ### Run tests - Terminal in Stage
 > **`npm run run:stageUI`** — Runs the Cypress UI tests using the stage config file via terminal.
+
 > **`npm run run:stageAPI`** — Runs the Cypress API tests using the stage config file via terminal.
 
 ### Run tests - Via pipelines in gitlab
