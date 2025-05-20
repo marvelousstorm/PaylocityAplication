@@ -30,7 +30,7 @@ This project uses Cypress for end-to-end testing.
 
 > **`npm run run:stageAPI`** — Runs the Cypress API tests using the stage config file via terminal.
 
-### Run tests - Via pipelines in gitlab
+### Run tests - Via pipelines in github workflows
 
 1. Go to repository in github
 2. Click **Actions** section in the top menu
