@@ -12,7 +12,7 @@ module.exports = defineConfig({
     },
     env: {
       e2e: true,
-      platform: 'production',
+      platform: 'stage',
       baseURL: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/',
       username: 'TestUser747',
       password: 'gQ;)DE3[9qFJ',
